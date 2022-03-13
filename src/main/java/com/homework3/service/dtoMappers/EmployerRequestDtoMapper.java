@@ -6,9 +6,9 @@ import org.springframework.stereotype.Service;
 
 
 @Service
-public class EmployeeRequestDtoMapper extends DtoMapperFacade<Employer, EmployerRequestDto>{
+public class EmployerRequestDtoMapper extends DtoMapperFacade<Employer, EmployerRequestDto>{
 
-    public EmployeeRequestDtoMapper() {
+    public EmployerRequestDtoMapper() {
         super(Employer.class, EmployerRequestDto.class);
     }
 

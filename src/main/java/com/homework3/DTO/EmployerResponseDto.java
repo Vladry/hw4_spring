@@ -1,5 +1,6 @@
 package com.homework3.DTO;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.homework3.domain.AbstractEntity;
 import com.homework3.domain.Customer;
 import lombok.AllArgsConstructor;

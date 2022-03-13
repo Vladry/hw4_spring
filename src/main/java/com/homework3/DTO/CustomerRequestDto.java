@@ -15,7 +15,7 @@ import java.util.Set;
 @AllArgsConstructor
 public class CustomerRequestDto extends AbstractEntity {
 
-    @Min(2)
+    @Size(min = 3, message = "name must be longer!")
     private String name;
     @Email
     private String email;

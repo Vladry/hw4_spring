@@ -1,5 +1,6 @@
 package com.homework3.DTO;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.homework3.domain.AbstractEntity;
 import com.homework3.domain.Account;
 import com.homework3.domain.Employer;
@@ -14,11 +15,15 @@ import java.util.Set;
 @AllArgsConstructor
 public class CustomerResponseDto extends AbstractEntity {
 
+    @JsonProperty("fn")
     private String name;
     private String email;
     private Integer age;
+    @JsonProperty("phN")
     private String phoneNumber;
+    @JsonProperty("emplNa")
     private Set<Employer> employers_names;
+    @JsonProperty("accCurr")
     private Set<Account> accounts_currency;
 
 public Long getId(){

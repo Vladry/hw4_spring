@@ -9,6 +9,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceUnit;
 import javax.persistence.Query;
 import java.util.List;
+import java.util.Set;
 
 @Repository
 public class EmployerDao<T> implements Dao<Employer> {
@@ -76,6 +77,14 @@ public class EmployerDao<T> implements Dao<Employer> {
 
     @Override
     public void saveAll(List<Employer> entities) {
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        em.persist(entities);
+        em.getTransaction().commit();
+        em.close();
+    }
+
+    public void saveAll_fromSet(Set<Employer> entities) {
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         em.persist(entities);
