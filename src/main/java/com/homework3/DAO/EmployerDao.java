@@ -87,7 +87,7 @@ public class EmployerDao<T> implements Dao<Employer> {
     public List<Employer> findAll() {
         EntityManager em = emf.createEntityManager();
 
-        Query q = em.createQuery("SELECT e FROM EmployerRequestDto e");
+        Query q = em.createQuery("SELECT e FROM Employer e");
         List<Employer> el = q.getResultList();
         em.close();
         return el;

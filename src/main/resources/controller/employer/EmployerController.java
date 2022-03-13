@@ -3,12 +3,14 @@ package com.homework3.controller.employer;
 import com.homework3.DTO.EmployerRequestDto;
 import com.homework3.DTO.EmployerResponseDto;
 import com.homework3.domain.Employer;
-import com.homework3.service.EmployeeRequestDtoMapper;
-import com.homework3.service.EmployeeResponseDtoMapper;
+import com.homework3.service.dtoMappers.EmployeeRequestDtoMapper;
+import com.homework3.service.dtoMappers.EmployeeResponseDtoMapper;
+import com.homework3.service.dtoMappers.EmployerArrayRequestMapper;
 import com.homework3.service.EmployerService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 public class EmployerController {
@@ -16,39 +18,48 @@ public class EmployerController {
     private final EmployerService service;
     private final EmployeeResponseDtoMapper respDtoMapper;
     private final EmployeeRequestDtoMapper reqDtoMapper;
+    private final EmployerArrayRequestMapper arrayReqDtoMapper;
 
     EmployerController(EmployerService employerService,
                        EmployeeResponseDtoMapper employeeRespDtoMapper,
-                       EmployeeRequestDtoMapper employeeReqDtoMapper) {
+                       EmployeeRequestDtoMapper employeeReqDtoMapper,
+                       EmployerArrayRequestMapper employerArrayReqDtoMapper) {
         this.service = employerService;
         this.respDtoMapper = employeeRespDtoMapper;
         this.reqDtoMapper = employeeReqDtoMapper;
+        this.arrayReqDtoMapper = employerArrayReqDtoMapper;
     }
 
 
     /***  SAVING endpoints  ***/
-    @PostMapping("/employer")
+    @PostMapping("/employers")
     public void saveEmployer(@RequestBody() EmployerRequestDto empReqDto) {
         Employer e = reqDtoMapper.convertToEntity(empReqDto);
         service.save(e);
     }
 
-    @PostMapping("/employers")    //todo тут DTO mapping пока не реализую
-    public void saveAllEmployers(@RequestBody List<Employer> le) {
-        service.saveAll(le);
+    @PostMapping("/employers/list")    //todo тут DTO mapping пока не реализую
+    public void saveAllEmployers(@RequestBody List<EmployerRequestDto> le) {
+        List<Employer> lemp = le.stream()
+                .map(arrayReqDtoMapper::convertToEntity)
+        .collect(Collectors.toList());
+        service.saveAll(lemp);
     }
 
-    @GetMapping("/employers")    //todo тут DTO mapping пока не реализую
-    public List<Employer> findAll() {
-        return service.findAll();
+
+    /*** RETRIEVE endpoints ***/
+    @GetMapping("/employers/all")
+    public List<EmployerResponseDto> findAll() {
+        return service.findAll().stream().map(respDtoMapper::convertToDto)
+                .collect(Collectors.toList());
     }
 
-
-
-    @PostMapping("/employer/{id}")
-    public void getEmployerById(@PathVariable("id") Long id) {
-        service.getById(id);
+    @GetMapping("/employers/{id}")
+    public EmployerResponseDto getEmployerById(@PathVariable("id") Long id) {
+        Employer e = service.getById(id);
+        return respDtoMapper.convertToDto(e);
     }
+
 
 
 /***  DELETE endpoints  ***/

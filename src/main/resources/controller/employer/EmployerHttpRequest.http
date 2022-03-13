@@ -1,0 +1,33 @@
+GET http://localhost:9000/employers/1
+###
+
+GET http://localhost:9000/employers/all
+###
+
+POST http://localhost:9000/employers
+Content-Type: application/json
+
+{
+  "name": "New Venture_0",
+  "street": "Streetless",
+  "address": "Kiev"
+}
+###
+
+POST http://localhost:9000/employers/list
+Content-Type: application/json
+
+{ "employerArray":
+[
+  {
+  "name": "New Venture_1",
+  "street": "Streetless",
+  "address": "Kiev"
+},
+  {
+    "name": "New Venture_2",
+    "street": "Streetless",
+    "address": "Kiev"
+  }
+]
+}

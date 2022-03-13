@@ -1,4 +1,4 @@
-package com.homework3.service;
+package com.homework3.service.dtoMappers;
 
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
