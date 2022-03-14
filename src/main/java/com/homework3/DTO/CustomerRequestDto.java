@@ -24,7 +24,6 @@ public class CustomerRequestDto extends AbstractEntity {
     private Integer age;
     @Pattern(regexp = "(\\+38|0)[0-9]{9}]")   // https://www.baeldung.com/java-regex-validate-phone-numbers
     private String phoneNumber;
-    @JsonIgnore
     @NotBlank
     private String password;
     private Set<EmployerRequestDto> employers;
@@ -32,11 +31,12 @@ public class CustomerRequestDto extends AbstractEntity {
 
 
 
-    public CustomerRequestDto(String name, String email, int age) {
+    public CustomerRequestDto(String name, String email, int age, String password) {
         this.name = name;
         this.age = age;
         this.email = email;
         this.accounts = new HashSet<>();
+        this.password = password;
     }
 
     public CustomerRequestDto(String name) {

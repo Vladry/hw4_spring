@@ -1,64 +1,54 @@
 package com.homework3.controller.customer;
 
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.homework3.DTO.CustomerRequestDto;
+import com.homework3.DTO.CustomerResponseDto;
+import com.homework3.DTO.listCustomerDto;
 import com.homework3.domain.Currency;
 import com.homework3.domain.Customer;
 import com.homework3.service.CustomerService;
+import com.homework3.service.dtoMappers.CustomerRequestDtoMapper;
+import com.homework3.service.dtoMappers.CustomerResponseDtoMapper;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 public class CustomerController {
 
     private final CustomerService service;
-    public CustomerController(CustomerService service) {
+    private final CustomerRequestDtoMapper custReqDtoMapper;
+    private final CustomerResponseDtoMapper custRespDtoMapper;
+    public CustomerController(CustomerService service,
+                              CustomerRequestDtoMapper custReqDtoMapper,
+                              CustomerResponseDtoMapper custRespDtoMapper) {
         this.service = service;
+        this.custReqDtoMapper = custReqDtoMapper;
+        this.custRespDtoMapper = custRespDtoMapper;
     }
 
-@PutMapping("update/customers")
-    public Customer update(
-            @RequestBody Customer customer){
-        return service.update(customer);
-    }
 
-    @PostMapping("customers/account")
+    /*** ACCOUNT methods ***/
+    @PostMapping("/customers/account")
     public Customer create(
             @RequestBody Currency currency, Long id){
         return service.createAccount(currency, id);
     }
 
-    @PutMapping("customers/account")
-
+    @PutMapping("/customers/account")
     public Customer delete(
             @RequestBody String accNumber, Long id){
         return service.deleteAccount(accNumber, id);
     }
 
-    @DeleteMapping("/customers")
-    public boolean delete(
-            @RequestBody Customer c){
-        return service.delete(c);
-    }
 
-    @DeleteMapping("/customers/all")
-    public void deleteAll(
-            @RequestBody List<Customer> lc){
-        service.deleteAll(lc);
-    }
 
-    @PostMapping("/customers/all")
-    public void saveAll(
-            @RequestBody List<Customer> lc){
-        System.out.println("in controller customers:  saveAll" + lc);
-                service.saveAll(lc);
-    }
 
-//    @PostMapping("/customers/test")
-//    public void saveAll(
-//            @RequestBody List<Integer> lc){
-//        System.out.println("in controller customers:  saveAll" + lc);
-//    }
 
+
+    /*** RETRIEVE ***/
     @GetMapping("/customers/all")
     public List<Customer> findAll(){
         List<Customer> lc = service.findAll();
@@ -66,28 +56,57 @@ public class CustomerController {
         return lc;
     }
 
-    @DeleteMapping("/customers/{id}")
-    public boolean deleteById( @PathVariable("id") Long id){
-        return service.deleteById(id);
-    }
-
-//
-//    @GetMapping("/customers/{id}")
-//    public Customer getById(@PathVariable("id") Long id){
-//        return service.getById(id);
-//    }
-
-
     @GetMapping("/customers/{id}")
-    public Customer getById(@PathVariable("id") String id){
-        return service.getById(Long.parseLong(id));
+    public CustomerResponseDto getById(@PathVariable("id") Long id){
+        return custRespDtoMapper.convertToDto( service.getById(id) );
     }
 
+
+    /*** CREATE ***/
     @PostMapping("/customers")
     public Customer save(
             @RequestBody Customer c) {
         service.save(c);
         return c;
     }
+
+    @PutMapping("update/customers")
+    public Customer update(
+            @RequestBody Customer customer){
+        return service.update(customer);
+    }
+
+    @PostMapping("/customers/all")
+    public void saveAll(
+           @Valid @RequestBody listCustomerDto lDto){
+        List<CustomerRequestDto> lc = lDto.getList();
+        service.saveAll( lc.stream().map(custReqDtoMapper::convertToEntity)
+                .collect(Collectors.toList()) );
+    }
+
+
+
+
+    /*** DELETE ***/
+    @DeleteMapping("/customers")
+    public void delete(
+            @RequestBody Customer c){
+        service.delete(c);
+    }
+
+    @DeleteMapping("/customers/all")
+    public void deleteAll(
+            @RequestBody listCustomerDto lDto){
+        List<CustomerRequestDto> lc = lDto.getList();
+        service.deleteAll(lc.stream().map(custReqDtoMapper::convertToEntity)
+                .collect(Collectors.toList()));
+    }
+
+    @DeleteMapping("/customers/{id}")
+    public void deleteById( @PathVariable("id") Long id){
+        service.deleteById(id);
+    }
+
+
 
 }

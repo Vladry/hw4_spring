@@ -22,16 +22,13 @@ public class EmployerController {
     private final EmployerService service;
     private final EmployeeResponseDtoMapper respDtoMapper;
     private final EmployerRequestDtoMapper reqDtoMapper;
-//    private final EmployerArrayRequestMapper employerArrayRequestMapper;
 
     EmployerController(EmployerService employerService,
                        EmployeeResponseDtoMapper employeeRespDtoMapper,
-                       EmployerRequestDtoMapper employeeReqDtoMapper/*,
-                       EmployerArrayRequestMapper employerArrayReqDtoMapper*/) {
+                       EmployerRequestDtoMapper employeeReqDtoMapper) {
         this.service = employerService;
         this.respDtoMapper = employeeRespDtoMapper;
         this.reqDtoMapper = employeeReqDtoMapper;
-//        this.employerArrayRequestMapper = employerArrayReqDtoMapper;
     }
 
 

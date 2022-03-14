@@ -1,5 +1,6 @@
 package com.homework3.DTO;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.homework3.domain.AbstractEntity;
 import com.homework3.domain.Account;
@@ -21,6 +22,8 @@ public class CustomerResponseDto extends AbstractEntity {
     private Integer age;
     @JsonProperty("phN")
     private String phoneNumber;
+    @JsonIgnore
+    private String password;
     @JsonProperty("emplNa")
     private Set<Employer> employers_names;
     @JsonProperty("accCurr")

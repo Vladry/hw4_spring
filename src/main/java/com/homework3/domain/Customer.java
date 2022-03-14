@@ -26,6 +26,7 @@ public class Customer extends AbstractEntity {
     private Integer age;
     private String phoneNumber;
     @JsonIgnore
+    @Column(name = "password", length = 30, nullable = false)
     private String password;
 
 
