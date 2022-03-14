@@ -41,3 +41,21 @@ Content-Type: application/json
 }
 ]
 }
+###
+DELETE http://localhost:9000/employers/1
+###
+DELETE http://localhost:9000/employers
+Content-Type: application/json
+
+{
+  "id": 3,
+  "createdDate": null,
+  "lastModifiedDate": null,
+  "name": "IT - world",
+  "street": "Privoz",
+  "address": "Odessa",
+  "customers_ids": null
+}
+###
+DELETE http://localhost:9000/employers/all
+

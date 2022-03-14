@@ -61,7 +61,7 @@ public class EmployerDao<T> implements Dao<Employer> {
         EntityManager em = emf.createEntityManager();
         try {
             em.getTransaction().begin();
-            Query q = em.createQuery("DELETE FROM EmployerRequestDto e WHERE e IN (:emp)")
+            Query q = em.createQuery("DELETE FROM Employer e WHERE e IN (:emp)")
                     .setParameter("emp", entities);
             q.executeUpdate();
             em.getTransaction().commit();

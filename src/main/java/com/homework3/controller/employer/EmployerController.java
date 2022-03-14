@@ -43,9 +43,9 @@ public class EmployerController {
 
 
 
-    @PostMapping("/employers/list")    //todo тут DTO mapping пока не реализую
-    public void saveAllEmployers(@Valid @RequestBody listEmployerDto dto) {
-        List<EmployerRequestDto> lEmp = dto.getList();
+    @PostMapping("/employers/list")
+    public void saveAllEmployers(@Valid @RequestBody listEmployerDto lDto) {
+        List<EmployerRequestDto> lEmp = lDto.getList();
          Set<Employer> le = lEmp.stream().map(reqDtoMapper::convertToEntity)
                 .collect(Collectors.toSet());
         service.saveAll_fromSet(le);
@@ -83,4 +83,8 @@ public class EmployerController {
         service.deleteAll(le);
     }
 
+    @DeleteMapping("/employers/all")
+    public deleteAllEmployersFromDB(){
+
+    }
 }

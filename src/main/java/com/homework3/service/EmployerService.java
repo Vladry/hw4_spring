@@ -1,9 +1,8 @@
 package com.homework3.service;
 
-import com.homework3.DAO.EmployerDao;
-import com.homework3.DAO.EmployerRepository;
+//import com.homework3.DAO.EmployerDao;
+import com.homework3.DAO.EmployerJpaRepository;
 import com.homework3.domain.Employer;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -13,20 +12,24 @@ import java.util.Set;
 @Service
 @Transactional
 public class EmployerService {
-    @Autowired
-    EmployerDao<Employer> employerDao;
 
-    @Autowired
-    EmployerRepository JpaRepository;
+//    private final EmployerDao<Employer> employerDao;
+    private final EmployerJpaRepository JpaRepository;
+
+    public EmployerService(/*EmployerDao<Employer> employerDao,*/
+                           EmployerJpaRepository JpaRepository){
+//        this.employerDao = employerDao;
+        this.JpaRepository = JpaRepository;
+    }
 
     public Employer save(Employer obj) {
-        employerDao.save(obj);
+        JpaRepository.save(obj);
         return obj;
     }
 
     public boolean delete(Employer obj) {
         try {
-            employerDao.delete(obj);
+            JpaRepository.delete(obj);
             return true;
         } catch (Exception e) {
             e.printStackTrace();
@@ -35,23 +38,23 @@ public class EmployerService {
     }
 
     public void deleteAll(List<Employer> entities) {
-        employerDao.deleteAll(entities);
+        JpaRepository.deleteAll(entities);
     }
 
     public void saveAll(List<Employer> entities) {
-        employerDao.saveAll(entities);
+        JpaRepository.saveAll(entities);
     }
     public void saveAll_fromSet(Set<Employer> entities) {
         JpaRepository.saveAll(entities);
     }
 
     public List<Employer> findAll() {
-        return employerDao.findAll();
+        return JpaRepository.findAll();
     }
 
     public boolean deleteById(Long id) {
         try {
-            employerDao.deleteById(id);
+            JpaRepository.deleteById(id);
         } catch (Exception ex) {
             ex.printStackTrace();
             return false;
@@ -60,7 +63,7 @@ public class EmployerService {
     }
 
     public Employer getById(Long id) {
-        return employerDao.getById(id);
+        return JpaRepository.getById(id);
     }
 }
 
