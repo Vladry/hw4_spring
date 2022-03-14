@@ -1,6 +1,7 @@
 package com.homework3.service;
 
 //import com.homework3.DAO.EmployerDao;
+
 import com.homework3.DAO.EmployerJpaRepository;
 import com.homework3.domain.Employer;
 import org.springframework.stereotype.Service;
@@ -13,11 +14,11 @@ import java.util.Set;
 @Transactional
 public class EmployerService {
 
-//    private final EmployerDao<Employer> employerDao;
+    //    private final EmployerDao<Employer> employerDao;
     private final EmployerJpaRepository JpaRepository;
 
     public EmployerService(/*EmployerDao<Employer> employerDao,*/
-                           EmployerJpaRepository JpaRepository){
+            EmployerJpaRepository JpaRepository) {
 //        this.employerDao = employerDao;
         this.JpaRepository = JpaRepository;
     }
@@ -44,6 +45,7 @@ public class EmployerService {
     public void saveAll(List<Employer> entities) {
         JpaRepository.saveAll(entities);
     }
+
     public void saveAll_fromSet(Set<Employer> entities) {
         JpaRepository.saveAll(entities);
     }
@@ -64,6 +66,10 @@ public class EmployerService {
 
     public Employer getById(Long id) {
         return JpaRepository.getById(id);
+    }
+
+    public void deleteAllEmployersFromDB() {
+        JpaRepository.deleteAll();
     }
 }
 

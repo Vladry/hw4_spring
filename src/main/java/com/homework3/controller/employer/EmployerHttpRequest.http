@@ -58,4 +58,29 @@ Content-Type: application/json
 }
 ###
 DELETE http://localhost:9000/employers/all
+###
+DELETE http://localhost:9000/employers/list
+Content-Type: application/json
 
+{ "list":
+[
+  {
+    "id": 4,
+    "createdDate": null,
+    "lastModifiedDate": null,
+    "name": "Venture IT Creations",
+    "street": "Brooklyn",
+    "address": "New-York",
+    "customers_ids": null
+  },
+  {
+    "id": 5,
+    "createdDate": null,
+    "lastModifiedDate": null,
+    "name": "Self-Employed",
+    "street": "Gaydara",
+    "address": "Kiev city",
+    "customers_ids": null
+  }
+]
+}

@@ -11,6 +11,7 @@ import com.homework3.service.EmployerService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -42,11 +43,10 @@ public class EmployerController {
     }
 
 
-
     @PostMapping("/employers/list")
     public void saveAllEmployers(@Valid @RequestBody listEmployerDto lDto) {
         List<EmployerRequestDto> lEmp = lDto.getList();
-         Set<Employer> le = lEmp.stream().map(reqDtoMapper::convertToEntity)
+        Set<Employer> le = lEmp.stream().map(reqDtoMapper::convertToEntity)
                 .collect(Collectors.toSet());
         service.saveAll_fromSet(le);
     }
@@ -66,8 +66,7 @@ public class EmployerController {
     }
 
 
-
-/***  DELETE endpoints  ***/
+    /***  DELETE endpoints  ***/
     @DeleteMapping("/employers")   //todo тут DTO mapping пока не реализую
     public void deleteEmployer(@RequestBody Employer e) {
         service.delete(e);
@@ -78,13 +77,14 @@ public class EmployerController {
         service.deleteById(id);
     }
 
-    @DeleteMapping("/employers/list")   //todo тут DTO mapping пока не реализую
-    public void deleteAllEmployers(@RequestBody List<Employer> le) {
-        service.deleteAll(le);
+    @DeleteMapping("/employers/list")
+    public void deleteAllEmployers(@RequestBody listEmployerDto lDto) {
+        List<EmployerRequestDto> le = lDto.getList();
+        service.deleteAll( le.stream().map(reqDtoMapper::convertToEntity).collect(Collectors.toList()) );
     }
 
     @DeleteMapping("/employers/all")
-    public deleteAllEmployersFromDB(){
-
+    public void deleteAllEmployersFromDB() {
+        service.deleteAllEmployersFromDB();
     }
 }
