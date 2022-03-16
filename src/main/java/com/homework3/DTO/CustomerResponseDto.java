@@ -27,7 +27,8 @@ public class CustomerResponseDto extends AbstractEntity {
     @JsonProperty("emplNa")
     private Set<Employer> employers_names;
     @JsonProperty("accCurr")
-    private Set<Account> accounts_currency;
+//    private Set<Account> accounts_currency;
+    private String accounts_currency;
 
 public Long getId(){
     return this.id;

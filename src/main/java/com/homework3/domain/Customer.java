@@ -32,12 +32,12 @@ public class Customer extends AbstractEntity {
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "customers_employers")
-    private Set<Employer> employers;
-
-
+    private Set<Employer> employers = new HashSet<>();
 
     @OneToMany(mappedBy="customer", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
-    private Set<Account> accounts;
+    private Set<Account> accounts = new HashSet<>();
+
+
 
     public Customer(String name, String email, int age) {
         this.name = name;

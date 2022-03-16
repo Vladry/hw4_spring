@@ -7,6 +7,7 @@ import com.homework3.domain.Customer;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import java.util.UUID;
 
@@ -15,25 +16,20 @@ import java.util.UUID;
 @AllArgsConstructor
 public class AccountRequestDto extends AbstractEntity {
 
-    String number;
-    Currency currency;
+    @Min(0)
+    @Max(4)
+    int currency;
     @Min(0)
     Double balance;
-    Customer customer;
+    @Min(1)
+    Long customer_id;
 
 
-    public AccountRequestDto(Currency currency, Customer customer) {
-        this.number = UUID.randomUUID().toString();
-        this.currency = currency;
-        this.balance = 0.0;
-        this.customer = customer;
-    }
+//    public AccountRequestDto(int currency, Double balance, Long customer_id) {
+//        this.currency = currency;
+//        this.balance = balance;
+//        this.customer_id = customer_id;
+//    }
 
-    public AccountRequestDto(Currency currency, Double balance, Customer customer) {
-        this.number = UUID.randomUUID().toString();
-        this.currency = currency;
-        this.balance = balance;
-        this.customer = customer;
-    }
 }
 

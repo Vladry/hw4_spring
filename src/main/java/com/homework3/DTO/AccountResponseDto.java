@@ -15,7 +15,7 @@ public class AccountResponseDto extends AbstractEntity {
     String currency;
     Double balance;
 
-    Customer customer;
+    Long customer_id;
 
     public Long getId(){
         return id;

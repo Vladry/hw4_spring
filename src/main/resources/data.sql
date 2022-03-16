@@ -1,29 +1,34 @@
 SET FOREIGN_KEY_CHECKS=0;
 
-INSERT INTO customers (name, email, age, password)
+INSERT INTO customers (name, email, age, phone_number, password)
 VALUES ('Vlad',
         'rvy@ukr.net',
         40,
+        '+380675094252',
         'pwVlad'
         ),
        ('Sergey',
         'sergo@ukr.net',
         42,
+        '234',
         'pwSergey'
         ),
        ('Max',
         'Max@ukr.net',
         38,
+        '234234',
         'pwMax'
         ),
        ('Evgeny',
         'evgen-20@ukr.net',
         20,
+        '+380637400791',
         'pwEvgeny'
         ),
        ('Petro',
         'petya@ukr.net',
         30,
+        '+380637400791',
         'pwPetro'
         );
 

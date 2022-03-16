@@ -88,3 +88,12 @@ POST http://localhost:9000/customers/account
 ###
 PUT http://localhost:9000/customers/account
 ###
+
+POST http://localhost:9000/customers/account
+Content-Type: application/json
+
+{
+  "currency": 1,
+  "balance": 0,
+  "id": 1
+}

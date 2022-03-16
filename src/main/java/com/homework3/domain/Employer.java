@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -20,7 +21,7 @@ public class Employer extends AbstractEntity {
     @JsonIgnore   //без этого не будут из базы выдаваться customers!
     @ManyToMany(fetch = FetchType.EAGER)
 //    @JoinTable(name = "customers_employers")  -эту строку нельзя, т.к. она уже есть в Customer!
-    private Set<Customer> customers;
+    private Set<Customer> customers = new HashSet<>();
 
 
 }
