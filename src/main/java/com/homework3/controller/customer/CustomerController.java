@@ -45,8 +45,9 @@ public class CustomerController {
         Account newAcc = accService.save(ac);
         c.getAccounts().add(newAcc);
         Customer returnCustomer =  customerService.update(c);
-
-        return custRespDtoMapper.convertToDto(returnCustomer);
+        CustomerResponseDto cDto = custRespDtoMapper.convertToDto(returnCustomer);
+        custRespDtoMapper.decorateDto(cDto, returnCustomer);
+        return cDto;
     }
 
     @DeleteMapping("/customers/account")

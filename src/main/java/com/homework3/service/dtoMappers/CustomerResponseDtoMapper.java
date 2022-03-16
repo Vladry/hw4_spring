@@ -15,14 +15,13 @@ public class CustomerResponseDtoMapper extends DtoMapperFacade<Customer, Custome
     }
 
     @Override
-    protected void decorateDto(final CustomerResponseDto dto, final Customer entity) {
-    }
-
-    @Override
-    protected void decorateEntity(final Customer entity, final CustomerResponseDto dto){
+    public void decorateDto(final CustomerResponseDto dto, final Customer entity) {
         List<String> accNumberList = entity.getAccounts().stream().map(a-> a.getCurrency().toString()).collect(Collectors.toList());
         String accNumberString = accNumberList.toString();
         dto.setAccounts_currency(accNumberString);
     }
+
+    @Override
+    public void decorateEntity(final Customer entity, final CustomerResponseDto dto){}
 
 }
