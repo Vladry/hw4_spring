@@ -1,4 +1,4 @@
-package com.homework3.DTO;
+package com.homework3.DTO.customer;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;

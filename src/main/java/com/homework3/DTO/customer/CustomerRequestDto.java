@@ -1,5 +1,6 @@
-package com.homework3.DTO;
+package com.homework3.DTO.customer;
 
+import com.homework3.DTO.employer.EmployerRequestDto;
 import com.homework3.domain.AbstractEntity;
 import com.homework3.domain.Account;
 import lombok.AllArgsConstructor;

@@ -1,15 +1,18 @@
 package com.homework3.controller.account;
 
-import com.homework3.DTO.AccountRequestDto;
-import com.homework3.DTO.Account_Id_Dto;
+import com.homework3.DTO.account.AccountRequestDto;
+import com.homework3.DTO.account.AccountTransferDto;
+import com.homework3.DTO.account.ListAccountRequestDto;
 import com.homework3.domain.Account;
 import com.homework3.domain.Currency;
 import com.homework3.domain.Customer;
 import com.homework3.service.AccountService;
 import com.homework3.service.CustomerService;
+import com.homework3.service.dtoMappers.AccountRequestDtoMapper;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/accounts")
@@ -17,16 +20,41 @@ public class AccountController {
 
     private final AccountService accService;
     private final CustomerService customerService;
-    public AccountController(AccountService accService, CustomerService customerService) {
+    private final AccountRequestDtoMapper accReqDtoMapper;
+
+    public AccountController(AccountService accService,
+                             CustomerService customerService,
+                             AccountRequestDtoMapper accReqDtoMapper) {
         this.accService = accService;
         this.customerService = customerService;
+        this.accReqDtoMapper = accReqDtoMapper;
     }
 
 
-    /*** ACCOUNT methods ***/
+    /*** TRANSVER endpoints ***/
+    @PostMapping("/put-amount")
+    public boolean putAmount(
+            @RequestBody AccountTransferDto dto) {
+        return accService.putAmount(dto.getAccNumber(), dto.getAmount());
+    }
+
+    @PostMapping("/draw-amount")
+    public boolean drawAmount(
+            @RequestBody AccountTransferDto dto) {
+        return accService.drawAmount(dto.getAccNumber(), dto.getAmount());
+    }
+
+    @PostMapping("/transfer-amount")
+    public boolean transferAmount(
+            @RequestBody AccountTransferDto dto) {
+        return accService.transferAmount(dto.getFrom(), dto.getTo(), dto.getAmount());
+    }
+
+
+    /*** CREATE endpoints ***/
     @PostMapping
     public Account create(
-            @RequestBody AccountRequestDto a){
+            @RequestBody AccountRequestDto a) {
         Currency[] cur = Currency.values();
         Customer c;
         Account ac = null;
@@ -41,75 +69,46 @@ public class AccountController {
         return ac;
     }
 
-    @DeleteMapping("/{id}")
-    public void delete(
-            @PathVariable("id") Long id){
-        accService.deleteById(id);
+    @PostMapping("/all")
+    public void saveAll(
+            @RequestBody ListAccountRequestDto dtoR) {
+        List<AccountRequestDto> laR = dtoR.getList();
+        List<Account> la = laR.stream().map(dto -> {
+            Account a = accReqDtoMapper.convertToEntity(dto);
+            System.out.println("in controller, account: " + a);
+            accReqDtoMapper.decorateEntity(a, dto);
+            return a;
+        }).collect(Collectors.toList());
+        accService.saveAll(la);
     }
 
 
-
-
-
-//    @PostMapping
-//    public Account save(
-//            @RequestBody Account_Id_Dto a) {
-//        Customer c = customerService.getById(a.getCustomer_id());
-//        Account acc = new Account(a.getCurrency(), a.getBalance(), c);
-//        accService.save(acc);
-//        return acc;
-//    }
-//
-
-    @PostMapping("put-amount")
-    public boolean putAmount(
-            @RequestBody String accNum, Double amount) {
-        return accService.putAmount(accNum, amount);
+    /*** RETRIEVE endpoints ***/
+    @GetMapping("all")
+    public List<Account> findAll() {
+        return accService.findAll();
     }
 
-    @PostMapping("draw-amount")
-    public boolean drawAmount(
-            @RequestBody String accNum, Double amount) {
-        return accService.drawAmount(accNum, amount);
+    @GetMapping("/{id}")
+    public Account getById(
+            @PathVariable("id") Long id) {
+        return accService.getById(id);
     }
 
-    @PostMapping("make-transfer")
-    public boolean transferAmount(
-            @RequestBody String from, String to, Double amount) {
-        return accService.transferAmount(from, to, amount);
-    }
 
-//    @DeleteMapping
-//    public boolean delete(
-//            @RequestBody Account a) {
-//        return accService.delete(a);
-//    }
-
+    /*** DELETE endpoints ***/
     @DeleteMapping("/all")
     public void deleteAll(
             @RequestBody List<Account> la) {
         accService.deleteAll(la);
     }
 
-    @PostMapping("/all")
-    public void saveAll(
-            @RequestBody List<Account> la) {
-        accService.saveAll(la);
+
+    @DeleteMapping("/{id}")
+    public void delete(
+            @PathVariable("id") Long id) {
+        accService.deleteById(id);
     }
 
-    @GetMapping("all")
-    public List<Account> findAll() {
-        return accService.findAll();
-    }
-
-//    @DeleteMapping("{id}")
-//    public void deleteByIdL(@PathVariable("id") Long id) {
-//        accService.deleteById(id);
-//    }
-
-    @GetMapping("{id}")
-    public Account getById(@PathVariable("id") Long id) {
-        return accService.getById(id);
-    }
 
 }

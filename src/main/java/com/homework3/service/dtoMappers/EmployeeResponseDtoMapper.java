@@ -1,6 +1,6 @@
 package com.homework3.service.dtoMappers;
 
-import com.homework3.DTO.EmployerResponseDto;
+import com.homework3.DTO.employer.EmployerResponseDto;
 import com.homework3.domain.Employer;
 import org.springframework.stereotype.Service;
 

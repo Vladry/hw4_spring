@@ -1,12 +1,11 @@
-package com.homework3.DTO;
+package com.homework3.DTO.employer;
 
+import com.homework3.DTO.customer.CustomerRequestDto;
 import com.homework3.domain.AbstractEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.validator.constraints.Length;
 
-import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
 import java.util.Set;
 

@@ -1,6 +1,6 @@
 package com.homework3.service.dtoMappers;
 
-import com.homework3.DTO.CustomerRequestDto;
+import com.homework3.DTO.customer.CustomerRequestDto;
 import com.homework3.domain.Customer;
 import org.springframework.stereotype.Service;
 

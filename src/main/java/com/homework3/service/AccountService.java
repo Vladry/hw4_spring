@@ -22,6 +22,7 @@ public class AccountService {
     }
 
 
+/*** TRANSFER methods ***/
     public boolean putAmount(String accNum, Double amount) {
         return accountDao.putAmount(accNum, amount);
     }
@@ -47,30 +48,31 @@ public class AccountService {
         }
     }
 
+
+
+    /*** BASIC methods ***/
     public Account save(Account a){
-        accountDao.save(a);
+        accountJpaRepository.save(a);
         return a;
     }
 
-    public boolean delete(Account a) {
-        return accountDao.delete(a);
+    public void delete(Account a) {
+        accountJpaRepository.delete(a);
     }
 
     public void deleteAll(List<Account> entities) {
-        accountDao.deleteAll(entities);
+        accountJpaRepository.deleteAll(entities);
     }
 
     public void saveAll(List<Account> entities) {
-        accountDao.saveAll(entities);
+        System.out.println("in service.saveAll() ");
+        accountJpaRepository.saveAll(entities);
     }
 
     public List<Account> findAll() {
-        return accountDao.findAll();
+        return accountJpaRepository.findAll();
     }
 
-//    public boolean deleteById(Long id) {
-//        return accountDao.deleteById(id);
-//    }
     public void deleteById(Long id){
         accountJpaRepository.deleteById(id);}
 

@@ -1,4 +1,4 @@
-package com.homework3.DTO;
+package com.homework3.DTO.account;
 
 import com.homework3.domain.AbstractEntity;
 import lombok.AllArgsConstructor;
@@ -16,11 +16,12 @@ public class AccountRequestDto extends AbstractEntity {
 
     @Min(0)
     @Max(4)
-    int currency;
+    private int currency;
     @Min(0)
-    Double balance;
+    private Double balance;
     @Min(1)
-    Long customer_id;
-    String account_id;
+    private Long customer_id;
+    private String account_id;
+    private String number;
 }
 

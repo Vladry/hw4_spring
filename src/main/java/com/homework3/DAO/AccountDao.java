@@ -87,7 +87,7 @@ public class AccountDao<T> extends abstractDao<Account> {
             Account acc = (Account) query.getSingleResult();
             if (acc != null && acc.getBalance() >= amount) {
                 em.getTransaction().begin();
-                acc.setBalance(acc.getBalance() + amount);
+                acc.setBalance(acc.getBalance() - amount);
                 em.merge(acc);
                 em.close();
                 em.getTransaction().commit();

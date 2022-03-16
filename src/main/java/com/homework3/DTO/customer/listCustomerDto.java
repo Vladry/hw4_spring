@@ -1,6 +1,5 @@
-package com.homework3.DTO;
+package com.homework3.DTO.customer;
 
-import com.homework3.domain.Customer;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

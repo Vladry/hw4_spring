@@ -1,8 +1,8 @@
 package com.homework3.controller.customer;
 
-import com.homework3.DTO.CustomerRequestDto;
-import com.homework3.DTO.CustomerResponseDto;
-import com.homework3.DTO.listCustomerDto;
+import com.homework3.DTO.customer.CustomerRequestDto;
+import com.homework3.DTO.customer.CustomerResponseDto;
+import com.homework3.DTO.customer.listCustomerDto;
 import com.homework3.domain.Customer;
 import com.homework3.service.CustomerService;
 import com.homework3.service.dtoMappers.CustomerRequestDtoMapper;

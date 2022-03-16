@@ -1,4 +1,4 @@
-package com.homework3.DTO;
+package com.homework3.DTO.employer;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.homework3.domain.AbstractEntity;
