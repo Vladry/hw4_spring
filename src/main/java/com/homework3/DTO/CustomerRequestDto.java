@@ -1,11 +1,11 @@
 package com.homework3.DTO;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.homework3.domain.AbstractEntity;
 import com.homework3.domain.Account;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.util.HashSet;
 import java.util.Set;

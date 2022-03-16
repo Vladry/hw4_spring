@@ -1,6 +1,7 @@
 package com.homework3.service;
 
 import com.homework3.DAO.AccountDao;
+import com.homework3.DAO.AccountJpaRepository;
 import com.homework3.domain.Account;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +15,11 @@ public class AccountService {
 
     @Autowired
     AccountDao<Account> accountDao;
+    AccountJpaRepository accountJpaRepository;
+
+    public AccountService(AccountJpaRepository accountRepository){
+        this.accountJpaRepository = accountRepository;
+    }
 
 
     public boolean putAmount(String accNum, Double amount) {
@@ -62,9 +68,11 @@ public class AccountService {
         return accountDao.findAll();
     }
 
-    public boolean deleteById(Long id) {
-        return accountDao.deleteById(id);
-    }
+//    public boolean deleteById(Long id) {
+//        return accountDao.deleteById(id);
+//    }
+    public void deleteById(Long id){
+        accountJpaRepository.deleteById(id);}
 
     public Account getById(Long id) {
         return accountDao.getById(id);

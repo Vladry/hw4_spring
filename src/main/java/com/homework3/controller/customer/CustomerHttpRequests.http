@@ -1,23 +1,25 @@
-PUT http://localhost:9000/update/customers
-Content-Type: application/json
-
-{ "id": 6,
-  "name": "Vlad",
-  "email": "rvy@ukr.net",
-  "age": 70
-}
-
-###
 POST http://localhost:9000/customers
 Content-Type: application/json
 
 {
   "name": "Vlad2",
   "email": "rvy@ukr.net",
-  "age": 50
+  "age": 50,
+  "password": "pwVlad2"
 }
-
 ###
+
+PUT http://localhost:9000/update/customers
+Content-Type: application/json
+
+{ "id": 6,
+  "name": "Vlad",
+  "email": "rvy@ukr.net",
+  "age": 70,
+  "password": "pwVlad2"
+}
+###
+
 POST http://localhost:9000/customers/all
 Content-Type: application/json
 
@@ -84,16 +86,3 @@ Content-Type: application/json
 }
 ###
 
-POST http://localhost:9000/customers/account
-###
-PUT http://localhost:9000/customers/account
-###
-
-POST http://localhost:9000/customers/account
-Content-Type: application/json
-
-{
-  "currency": 1,
-  "balance": 0,
-  "id": 1
-}
