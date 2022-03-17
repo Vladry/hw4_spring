@@ -4,6 +4,11 @@ import com.homework3.DAO.CustomerDao;
 import com.homework3.DAO.CustomerJpaRepository;
 import com.homework3.domain.Currency;
 import com.homework3.domain.Customer;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -11,6 +16,7 @@ import java.util.List;
 
 @Service
 @Transactional
+//@Slf4j
 public class CustomerService {
 
     private final CustomerDao<Customer> customerDao;
@@ -20,6 +26,13 @@ public class CustomerService {
         this.customerDao = customerDao;
         this.customerJpaRepository = customerJpaRepository;
     }
+
+
+    public Page<Customer> getPagedAll(int pageNumber, int pageSize){
+        Sort sort = Sort.by(new Sort.Order(Sort.Direction.ASC, "id"));
+        Pageable pageable = PageRequest.of(pageNumber, pageSize, sort);
+        return customerJpaRepository.findAll(pageable);
+    };
 
     public Customer update(Customer customer) {
         return customerJpaRepository.save(customer);

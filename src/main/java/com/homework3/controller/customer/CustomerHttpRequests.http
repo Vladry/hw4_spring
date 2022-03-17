@@ -86,3 +86,4 @@ Content-Type: application/json
 }
 ###
 
+GET http://localhost:9000/customers/all-paged/?pagenumber=0&pagesize=3
