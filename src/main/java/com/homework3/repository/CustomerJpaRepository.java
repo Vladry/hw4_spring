@@ -1,4 +1,4 @@
-package com.homework3.DAO;
+package com.homework3.repository;
 
 import com.homework3.domain.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;

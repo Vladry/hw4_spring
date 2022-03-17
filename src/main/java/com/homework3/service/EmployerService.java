@@ -1,8 +1,6 @@
 package com.homework3.service;
 
-//import com.homework3.DAO.EmployerDao;
-
-import com.homework3.DAO.EmployerJpaRepository;
+import com.homework3.repository.EmployerJpaRepository;
 import com.homework3.domain.Employer;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

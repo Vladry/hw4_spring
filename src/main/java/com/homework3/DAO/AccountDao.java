@@ -9,9 +9,10 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceUnit;
 import javax.persistence.Query;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
-public class AccountDao<T> extends abstractDao<Account> {
+public class AccountDao<T> implements Dao<Account> {
 
     @PersistenceUnit
     EntityManagerFactory emf;
@@ -39,14 +40,18 @@ public class AccountDao<T> extends abstractDao<Account> {
         }
     }
 
+
     @Override
-    public Account getById(Long id) {
+    public boolean delete(Account a){return false;}
+
+    @Override
+    public Optional<Account> getById(Long id) {
         EntityManager em = emf.createEntityManager();
         try {
-            return em.find(Account.class, id);
+            return Optional.ofNullable(em.find(Account.class, id) );
         } catch (HibernateException e) {
             e.printStackTrace();
-            return null;
+            return Optional.empty();
         } finally {
             if (em != null) {
                 em.close();
@@ -127,7 +132,7 @@ public class AccountDao<T> extends abstractDao<Account> {
     public List<Account> findAll() {
         EntityManager em = emf.createEntityManager();
         try {
-            return em.createQuery("from Account a").getResultList();
+            return em.createQuery("select a from Account a").getResultList();
         } catch (HibernateException e) {
             e.printStackTrace();
             return null;

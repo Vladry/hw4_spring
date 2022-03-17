@@ -92,7 +92,7 @@ public class AccountController {
     @GetMapping("/{id}")
     public Account getById(
             @PathVariable("id") Long id) {
-        return accService.getById(id);
+        return accService.getById(id).orElse(null);
     }
 
 

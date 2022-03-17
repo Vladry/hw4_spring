@@ -9,6 +9,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceUnit;
 import javax.persistence.Query;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 @Repository
@@ -56,7 +57,6 @@ public class EmployerDao<T> implements Dao<Employer> {
         return false;
     }
 
-    @Override
     public void deleteAll(List<Employer> entities) {
         EntityManager em = emf.createEntityManager();
         try {
@@ -75,7 +75,6 @@ public class EmployerDao<T> implements Dao<Employer> {
         }
     }
 
-    @Override
     public void saveAll(List<Employer> entities) {
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
@@ -121,8 +120,8 @@ public class EmployerDao<T> implements Dao<Employer> {
     }
 
     @Override
-    public Employer getById(Long id) {
+    public Optional<Employer> getById(Long id) {
         EntityManager em = emf.createEntityManager();
-        return em.find(Employer.class, id);
+        return Optional.ofNullable(em.find(Employer.class, id));
     }
 }

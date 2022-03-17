@@ -13,7 +13,7 @@ import javax.persistence.Query;
 import java.util.List;
 
 @Repository
-public class CustomerDao<T> extends abstractDao<Customer> {
+public class CustomerDao<T> {
 
     @PersistenceUnit
     EntityManagerFactory emf;

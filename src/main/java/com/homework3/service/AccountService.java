@@ -1,13 +1,14 @@
 package com.homework3.service;
 
 import com.homework3.DAO.AccountDao;
-import com.homework3.DAO.AccountJpaRepository;
+import com.homework3.repository.AccountJpaRepository;
 import com.homework3.domain.Account;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -76,7 +77,7 @@ public class AccountService {
     public void deleteById(Long id){
         accountJpaRepository.deleteById(id);}
 
-    public Account getById(Long id) {
+    public Optional<Account> getById(Long id) {
         return accountDao.getById(id);
     }
 
