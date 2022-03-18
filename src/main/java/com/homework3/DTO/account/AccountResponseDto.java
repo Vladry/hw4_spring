@@ -1,7 +1,6 @@
 package com.homework3.DTO.account;
 
 import com.homework3.domain.AbstractEntity;
-import com.homework3.domain.Customer;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

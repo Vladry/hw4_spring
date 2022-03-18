@@ -1,5 +1,7 @@
 package com.homework3.controller.customer;
 
+import com.fasterxml.jackson.annotation.JsonView;
+import com.homework3.DTO.Views;
 import com.homework3.DTO.customer.CustomerRequestDto;
 import com.homework3.DTO.customer.CustomerResponseDto;
 import com.homework3.DTO.customer.listCustomerDto;
@@ -43,6 +45,7 @@ public class CustomerController {
         return crDto;
     }
 
+    @JsonView(Views.Internal.class)
     @GetMapping("/customers/all")
     public List<Customer> findAll() {
         List<Customer> lc = customerService.findAll();
@@ -50,6 +53,7 @@ public class CustomerController {
         return lc;
     }
 
+    @JsonView(Views.Public.class)
     @GetMapping("/customers/{id}")
     public CustomerResponseDto getById(@PathVariable("id") Long id) {
         return custRespDtoMapper.convertToDto(customerService.getById(id));

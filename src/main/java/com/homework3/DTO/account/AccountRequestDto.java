@@ -4,7 +4,6 @@ import com.homework3.domain.AbstractEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.lang.Nullable;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
