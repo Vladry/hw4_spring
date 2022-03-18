@@ -16,7 +16,8 @@ public class CustomerResponseDtoMapper extends DtoMapperFacade<Customer, Custome
 
     @Override
     public void decorateDto(final CustomerResponseDto dto, final Customer entity) {
-        List<String> accNumberList = entity.getAccounts().stream().map(a-> a.getCurrency().toString()).collect(Collectors.toList());
+        List<String> accNumberList = entity.getAccounts().stream()
+                .map(a-> a.getCurrency().toString()).collect(Collectors.toList());
         String accNumberString = accNumberList.toString();
         dto.setAccounts_currency(accNumberString);
     }

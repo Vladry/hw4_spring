@@ -19,10 +19,15 @@ public class AccountRequestDtoMapper extends DtoMapperFacade<Account, AccountReq
     }
 
     public void decorateEntity(final Account account, final AccountRequestDto dto){
-        Customer c = customerService.getById(dto.getCustomer_id());
-        account.setCustomer(c);
-        Currency[] cur = Currency.values();
-        Currency cU = cur[dto.getCurrency()];
-        account.setCurrency(cU);
+        try {
+            Customer c = customerService.getById(dto.getCustomer_id());
+            account.setCustomer(c);
+            Currency[] cur = Currency.values();
+            Currency cU = cur[dto.getCurrency()];
+            account.setCurrency(cU);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("invalid customer or currency");
+        }
     }
 }
