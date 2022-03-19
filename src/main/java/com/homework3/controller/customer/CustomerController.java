@@ -96,7 +96,7 @@ public class CustomerController {
 
     @DeleteMapping("/customers/all")
     public void deleteAll(
-            @RequestBody listCustomerDto lDto) {
+            @RequestBody listCustomerDto<CustomerRequestDto> lDto) {
         List<CustomerRequestDto> lc = lDto.getList();
         customerService.deleteAll(lc.stream().map(custReqDtoMapper::convertToEntity)
                 .collect(Collectors.toList()));
