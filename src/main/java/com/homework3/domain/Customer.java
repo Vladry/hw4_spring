@@ -1,20 +1,27 @@
 package com.homework3.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
+//@Entity
+/*@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor*/
+
 @Entity
 @Getter
 @Setter
-@NoArgsConstructor
+//@NoArgsConstructor
+@RequiredArgsConstructor
 @AllArgsConstructor
+@ToString(of = {"name", "email", "age", "phoneNumber"})
+
+
 @Table(name = "customers")
 public class Customer extends AbstractEntity {
 
@@ -39,6 +46,7 @@ public class Customer extends AbstractEntity {
 
 
 
+/*
     public Customer(String name, String email, int age) {
         this.name = name;
         this.age = age;
@@ -67,29 +75,9 @@ public class Customer extends AbstractEntity {
         this.email = email;
         this.age = age;
     }
+*/
 
 
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || this.getClass() != o.getClass()) return false;
-        Customer c = (Customer) o;
-        return this.name.equals(c.name) && this.email.equals(c.email) && this.age.equals(c.age);
-    }
-
-    @Override
-    public int hashCode() {
-        int h1 = 31 * this.name.hashCode();
-        int h2 = 15 * this.email.hashCode();
-        int h3 = 37 * this.age;
-
-        return h1+h2+h3;
-    }
-
-    @Override
-    public String toString() {
-        return null;
-    }
 
 }

@@ -63,7 +63,7 @@ public class CustomerController {
     /*** CREATE ***/
     @PostMapping("/customers")
     public Customer save(
-            @RequestBody CustomerRequestDto c) {
+            @Valid @RequestBody CustomerRequestDto c) {
         Customer cEntity = custReqDtoMapper.convertToEntity(c);
         customerService.save(cEntity);
         return cEntity;
@@ -80,7 +80,7 @@ public class CustomerController {
 
     @PostMapping("/customers/all")
     public void saveAll(
-            @Valid @RequestBody listCustomerDto lDto) {
+            @Valid @RequestBody listCustomerDto<CustomerRequestDto> lDto) {
         List<CustomerRequestDto> lc = lDto.getList();
         customerService.saveAll(lc.stream().map(custReqDtoMapper::convertToEntity)
                 .collect(Collectors.toList()));

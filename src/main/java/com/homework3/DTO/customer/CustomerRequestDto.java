@@ -3,16 +3,16 @@ package com.homework3.DTO.customer;
 import com.homework3.DTO.employer.EmployerRequestDto;
 import com.homework3.domain.AbstractEntity;
 import com.homework3.domain.Account;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.validation.constraints.*;
 import java.util.HashSet;
 import java.util.Set;
 
-@Data
-@NoArgsConstructor
+@Getter
+@Setter
+//@NoArgsConstructor
+@RequiredArgsConstructor
 @AllArgsConstructor
 public class CustomerRequestDto extends AbstractEntity {
 
@@ -32,7 +32,7 @@ public class CustomerRequestDto extends AbstractEntity {
 
 
 
-    public CustomerRequestDto(String name, String email, int age, String password) {
+/*    public CustomerRequestDto(String name, String email, int age, String password) {
         this.name = name;
         this.age = age;
         this.email = email;
@@ -40,7 +40,7 @@ public class CustomerRequestDto extends AbstractEntity {
         this.password = password;
     }
 
-    public CustomerRequestDto(String name) {
+   public CustomerRequestDto(String name) {
         this.name = name;
     }
 
@@ -60,5 +60,7 @@ public class CustomerRequestDto extends AbstractEntity {
         this.name = name;
         this.email = email;
         this.age = age;
-    }
+    }*/
+
+
 }
