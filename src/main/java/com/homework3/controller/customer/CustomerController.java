@@ -6,9 +6,8 @@ import com.homework3.DTO.customer.CustomerRequestDto;
 import com.homework3.DTO.customer.CustomerResponseDto;
 import com.homework3.DTO.customer.listCustomerDto;
 import com.homework3.domain.Customer;
+import com.homework3.facade.CustomerFacade;
 import com.homework3.service.CustomerService;
-import com.homework3.service.dtoMappers.CustomerRequestDtoMapper;
-import com.homework3.service.dtoMappers.CustomerResponseDtoMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,15 +19,12 @@ import java.util.stream.Collectors;
 public class CustomerController {
 
     private final CustomerService customerService;
-    private final CustomerRequestDtoMapper custReqDtoMapper;
-    private final CustomerResponseDtoMapper custRespDtoMapper;
+    private final CustomerFacade facade;
 
     public CustomerController(CustomerService service,
-                              CustomerRequestDtoMapper custReqDtoMapper,
-                              CustomerResponseDtoMapper custRespDtoMapper) {
+                              CustomerFacade facade) {
         this.customerService = service;
-        this.custReqDtoMapper = custReqDtoMapper;
-        this.custRespDtoMapper = custRespDtoMapper;
+        this.facade = facade;
     }
 
 
@@ -40,7 +36,7 @@ public class CustomerController {
             @RequestParam("pagesize") int pageSize
     ) {
         Page<Customer> custPage = customerService.getPagedAll(pageNumber, pageSize);
-        List<CustomerResponseDto> crDto = custPage.stream().map(custRespDtoMapper::convertToDto)
+        List<CustomerResponseDto> crDto = custPage.stream().map(facade::convertToDto)
                 .collect(Collectors.toList());
         return crDto;
     }
@@ -56,7 +52,7 @@ public class CustomerController {
     @JsonView(Views.Public.class)
     @GetMapping("/customers/{id}")
     public CustomerResponseDto getById(@PathVariable("id") Long id) {
-        return custRespDtoMapper.convertToDto(customerService.getById(id));
+        return facade.convertToDto(customerService.getById(id));
     }
 
 
@@ -64,7 +60,7 @@ public class CustomerController {
     @PostMapping("/customers")
     public Customer save(
             @Valid @RequestBody CustomerRequestDto c) {
-        Customer cEntity = custReqDtoMapper.convertToEntity(c);
+        Customer cEntity = facade.convertToEntity(c);
         customerService.save(cEntity);
         return cEntity;
     }
@@ -72,7 +68,7 @@ public class CustomerController {
     @PutMapping("update/customers")
     public Customer update(
             @RequestBody CustomerRequestDto c) {
-        Customer cEntity = custReqDtoMapper.convertToEntity(c);
+        Customer cEntity = facade.convertToEntity(c);
         customerService.save(cEntity);
         return cEntity;
     }
@@ -82,7 +78,7 @@ public class CustomerController {
     public void saveAll(
             @Valid @RequestBody listCustomerDto<CustomerRequestDto> lDto) {
         List<CustomerRequestDto> lc = lDto.getList();
-        customerService.saveAll(lc.stream().map(custReqDtoMapper::convertToEntity)
+        customerService.saveAll(lc.stream().map(facade::convertToEntity)
                 .collect(Collectors.toList()));
     }
 
@@ -98,7 +94,7 @@ public class CustomerController {
     public void deleteAll(
             @RequestBody listCustomerDto<CustomerRequestDto> lDto) {
         List<CustomerRequestDto> lc = lDto.getList();
-        customerService.deleteAll(lc.stream().map(custReqDtoMapper::convertToEntity)
+        customerService.deleteAll(lc.stream().map(facade::convertToEntity)
                 .collect(Collectors.toList()));
     }
 
