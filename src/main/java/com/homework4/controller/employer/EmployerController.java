@@ -1,12 +1,12 @@
-package com.homework3.controller.employer;
+package com.homework4.controller.employer;
 
-import com.homework3.DTO.employer.listEmployerDto;
-import com.homework3.DTO.employer.EmployerRequestDto;
-import com.homework3.DTO.employer.EmployerResponseDto;
-import com.homework3.domain.Employer;
-import com.homework3.service.dtoMappers.EmployerRequestDtoMapper;
-import com.homework3.service.dtoMappers.EmployeeResponseDtoMapper;
-import com.homework3.service.EmployerService;
+import com.homework4.DTO.employer.listEmployerDto;
+import com.homework4.DTO.employer.EmployerRequestDto;
+import com.homework4.DTO.employer.EmployerResponseDto;
+import com.homework4.domain.Employer;
+import com.homework4.service.dtoMappers.EmployerRequestDtoMapper;
+import com.homework4.service.dtoMappers.EmployeeResponseDtoMapper;
+import com.homework4.service.EmployerService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;

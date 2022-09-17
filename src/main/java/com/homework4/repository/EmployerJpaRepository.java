@@ -1,6 +1,6 @@
-package com.homework3.repository;
+package com.homework4.repository;
 
-import com.homework3.domain.Employer;
+import com.homework4.domain.Employer;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 

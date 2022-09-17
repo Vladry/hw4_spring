@@ -1,7 +1,7 @@
-package com.homework3.service.dtoMappers;
+package com.homework4.service.dtoMappers;
 
-import com.homework3.DTO.employer.listEmployerDto;
-import com.homework3.domain.Employer;
+import com.homework4.DTO.employer.listEmployerDto;
+import com.homework4.domain.Employer;
 import org.springframework.stereotype.Service;
 
 @Service

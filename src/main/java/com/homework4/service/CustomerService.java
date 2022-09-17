@@ -1,9 +1,9 @@
-package com.homework3.service;
+package com.homework4.service;
 
-import com.homework3.DAO.CustomerDao;
-import com.homework3.repository.CustomerJpaRepository;
-import com.homework3.domain.Currency;
-import com.homework3.domain.Customer;
+import com.homework4.DAO.CustomerDao;
+import com.homework4.repository.CustomerJpaRepository;
+import com.homework4.domain.Currency;
+import com.homework4.domain.Customer;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;

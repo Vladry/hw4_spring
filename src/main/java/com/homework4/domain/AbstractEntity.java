@@ -1,8 +1,8 @@
-package com.homework3.domain;
+package com.homework4.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonView;
-import com.homework3.DTO.Views;
+import com.homework4.DTO.Views;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;

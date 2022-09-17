@@ -1,4 +1,4 @@
-package com.homework3.DTO;
+package com.homework4.DTO;
 
 public class Views {
     public static class Public{}

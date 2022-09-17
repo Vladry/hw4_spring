@@ -1,4 +1,4 @@
-package com.homework3.domain;
+package com.homework4.domain;
 
 public enum Currency {
     USD, EUR, UAH, CHF, GBP

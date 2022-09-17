@@ -1,7 +1,7 @@
-package com.homework3.service;
+package com.homework4.service;
 
-import com.homework3.repository.EmployerJpaRepository;
-import com.homework3.domain.Employer;
+import com.homework4.repository.EmployerJpaRepository;
+import com.homework4.domain.Employer;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

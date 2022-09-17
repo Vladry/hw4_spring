@@ -1,4 +1,4 @@
-package com.homework3.DTO.employer;
+package com.homework4.DTO.employer;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

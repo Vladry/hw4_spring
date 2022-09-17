@@ -1,8 +1,8 @@
-package com.homework3.service;
+package com.homework4.service;
 
-import com.homework3.DAO.AccountDao;
-import com.homework3.repository.AccountJpaRepository;
-import com.homework3.domain.Account;
+import com.homework4.DAO.AccountDao;
+import com.homework4.repository.AccountJpaRepository;
+import com.homework4.domain.Account;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

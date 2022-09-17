@@ -1,8 +1,8 @@
-package com.homework3.facade;
+package com.homework4.facade;
 
-import com.homework3.DTO.customer.CustomerRequestDto;
-import com.homework3.DTO.customer.CustomerResponseDto;
-import com.homework3.domain.Customer;
+import com.homework4.DTO.customer.CustomerRequestDto;
+import com.homework4.DTO.customer.CustomerResponseDto;
+import com.homework4.domain.Customer;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

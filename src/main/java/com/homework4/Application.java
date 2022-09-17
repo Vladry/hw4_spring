@@ -1,4 +1,4 @@
-package com.homework3;
+package com.homework4;
 
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;

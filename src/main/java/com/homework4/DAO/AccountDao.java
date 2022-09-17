@@ -1,6 +1,6 @@
-package com.homework3.DAO;
+package com.homework4.DAO;
 
-import com.homework3.domain.Account;
+import com.homework4.domain.Account;
 import org.hibernate.HibernateException;
 import org.springframework.stereotype.Repository;
 

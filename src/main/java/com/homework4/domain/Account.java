@@ -1,4 +1,4 @@
-package com.homework3.domain;
+package com.homework4.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;

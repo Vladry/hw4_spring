@@ -1,12 +1,11 @@
-package com.homework3.DTO.customer;
+package com.homework4.DTO.customer;
 
-import com.homework3.DTO.employer.EmployerRequestDto;
-import com.homework3.domain.AbstractEntity;
-import com.homework3.domain.Account;
+import com.homework4.DTO.employer.EmployerRequestDto;
+import com.homework4.domain.AbstractEntity;
+import com.homework4.domain.Account;
 import lombok.*;
 
 import javax.validation.constraints.*;
-import java.util.HashSet;
 import java.util.Set;
 
 @Getter

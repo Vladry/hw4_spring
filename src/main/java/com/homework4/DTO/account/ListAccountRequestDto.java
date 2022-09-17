@@ -1,4 +1,4 @@
-package com.homework3.DTO.account;
+package com.homework4.DTO.account;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

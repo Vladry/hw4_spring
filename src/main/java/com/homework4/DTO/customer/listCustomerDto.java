@@ -1,7 +1,6 @@
-package com.homework3.DTO.customer;
+package com.homework4.DTO.customer;
 
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import javax.validation.Valid;
 import java.util.*;

@@ -1,8 +1,7 @@
-package com.homework3.DTO.employer;
+package com.homework4.DTO.employer;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.homework3.domain.AbstractEntity;
-import com.homework3.domain.Customer;
+import com.homework4.domain.AbstractEntity;
+import com.homework4.domain.Customer;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

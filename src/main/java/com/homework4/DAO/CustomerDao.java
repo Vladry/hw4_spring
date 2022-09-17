@@ -1,16 +1,14 @@
-package com.homework3.DAO;
+package com.homework4.DAO;
 
-import com.homework3.domain.Account;
-import com.homework3.domain.Currency;
-import com.homework3.domain.Customer;
+import com.homework4.domain.Account;
+import com.homework4.domain.Currency;
+import com.homework4.domain.Customer;
 import org.hibernate.HibernateException;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceUnit;
-import javax.persistence.Query;
-import java.util.List;
 
 @Repository
 public class CustomerDao<T> {

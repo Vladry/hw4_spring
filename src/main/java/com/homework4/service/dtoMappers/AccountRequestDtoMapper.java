@@ -1,10 +1,10 @@
-package com.homework3.service.dtoMappers;
+package com.homework4.service.dtoMappers;
 
-import com.homework3.DTO.account.AccountRequestDto;
-import com.homework3.domain.Account;
-import com.homework3.domain.Currency;
-import com.homework3.domain.Customer;
-import com.homework3.service.CustomerService;
+import com.homework4.DTO.account.AccountRequestDto;
+import com.homework4.domain.Account;
+import com.homework4.domain.Currency;
+import com.homework4.domain.Customer;
+import com.homework4.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

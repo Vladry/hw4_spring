@@ -1,6 +1,6 @@
-package com.homework3.DTO.account;
+package com.homework4.DTO.account;
 
-import com.homework3.domain.Account;
+import com.homework4.domain.Account;
 import lombok.Data;
 
 @Data

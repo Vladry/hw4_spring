@@ -1,13 +1,13 @@
-package com.homework3.controller.customer;
+package com.homework4.controller.customer;
 
 import com.fasterxml.jackson.annotation.JsonView;
-import com.homework3.DTO.Views;
-import com.homework3.DTO.customer.CustomerRequestDto;
-import com.homework3.DTO.customer.CustomerResponseDto;
-import com.homework3.DTO.customer.listCustomerDto;
-import com.homework3.domain.Customer;
-import com.homework3.facade.CustomerFacade;
-import com.homework3.service.CustomerService;
+import com.homework4.DTO.Views;
+import com.homework4.DTO.customer.CustomerRequestDto;
+import com.homework4.DTO.customer.CustomerResponseDto;
+import com.homework4.DTO.customer.listCustomerDto;
+import com.homework4.domain.Customer;
+import com.homework4.facade.CustomerFacade;
+import com.homework4.service.CustomerService;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 

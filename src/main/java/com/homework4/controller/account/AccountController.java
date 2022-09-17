@@ -1,14 +1,14 @@
-package com.homework3.controller.account;
+package com.homework4.controller.account;
 
-import com.homework3.DTO.account.AccountRequestDto;
-import com.homework3.DTO.account.AccountTransferDto;
-import com.homework3.DTO.account.ListAccountRequestDto;
-import com.homework3.domain.Account;
-import com.homework3.domain.Currency;
-import com.homework3.domain.Customer;
-import com.homework3.service.AccountService;
-import com.homework3.service.CustomerService;
-import com.homework3.service.dtoMappers.AccountRequestDtoMapper;
+import com.homework4.DTO.account.AccountRequestDto;
+import com.homework4.DTO.account.AccountTransferDto;
+import com.homework4.DTO.account.ListAccountRequestDto;
+import com.homework4.domain.Account;
+import com.homework4.domain.Currency;
+import com.homework4.domain.Customer;
+import com.homework4.service.AccountService;
+import com.homework4.service.CustomerService;
+import com.homework4.service.dtoMappers.AccountRequestDtoMapper;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
