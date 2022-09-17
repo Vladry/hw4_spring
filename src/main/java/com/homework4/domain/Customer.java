@@ -7,12 +7,6 @@ import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
-//@Entity
-/*@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor*/
-
 @Entity
 @Getter
 @Setter
@@ -43,41 +37,5 @@ public class Customer extends AbstractEntity {
 
     @OneToMany(mappedBy="customer", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
     private Set<Account> accounts = new HashSet<>();
-
-
-
-/*
-    public Customer(String name, String email, int age) {
-        this.name = name;
-        this.age = age;
-        this.email = email;
-        this.accounts = new HashSet<>();
-    }
-
-    public Customer(String name) {
-        this.name = name;
-    }
-
-    public Customer(String name, String email) {
-        this.name = name;
-        this.email = email;
-    }
-
-    public Customer(String name, String email, Integer age) {
-        this.name = name;
-        this.email = email;
-        this.age = age;
-    }
-
-    public Customer(Long id, String name, String email, Integer age) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.age = age;
-    }
-*/
-
-
-
 
 }
