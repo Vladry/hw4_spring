@@ -6,7 +6,7 @@ import CreateAccount from "../components/CreateAccount";
 
 
 function App() {
-
+    let customers = [];
     const getCustomers = async () => {
         const allCustomersUrl = '/customers/all';
 
@@ -14,7 +14,11 @@ function App() {
             await fetch(allCustomersUrl, {
                 method: 'GET',
                 headers: {'Content-Type': 'application/json'}
-            }).then(r => r.json()).then(result => setCustomersArr(result));
+            }).then(r => r.json()).then(result => {
+                setCustomersArr(result);
+                customers = result;
+                console.log("customers fetched: ", customers);
+            });
         } catch {
             console.warn('error loading customers')
         }
@@ -23,7 +27,7 @@ function App() {
 
     return (
         <div className="App">
-            <CustomerRequestForm  customers={customersArr} getCustomers={getCustomers}/>
+            <CustomerRequestForm customers={customersArr} getCustomers={getCustomers}/>
             <br/><br/><br/>
             <CreateCustomer/><br/><br/>
             <CreateAccount/>

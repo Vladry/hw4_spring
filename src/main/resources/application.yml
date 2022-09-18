@@ -3,6 +3,14 @@
 # для справки:
 #    https://www.baeldung.com/spring-boot-data-sql-and-schema-sql
 
+
+logging:
+  level:
+    root: info
+    com: error
+    org: error
+
+
 server:
   port: 9000
 spring:
@@ -12,7 +20,7 @@ spring:
       mode: always
   h2:
     console:
-      enabled: true
+      enabled: true  # http://localhost:9000/h2-console/
       settings:
         trace: false
 ---
