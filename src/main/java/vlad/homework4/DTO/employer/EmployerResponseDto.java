@@ -1,5 +1,6 @@
 package vlad.homework4.DTO.employer;
 
+import lombok.experimental.Accessors;
 import vlad.homework4.domain.AbstractEntity;
 import vlad.homework4.domain.Customer;
 import lombok.AllArgsConstructor;
@@ -9,6 +10,7 @@ import lombok.NoArgsConstructor;
 import java.util.Set;
 
 @Data
+@Accessors(chain=true)
 @NoArgsConstructor
 @AllArgsConstructor
 public class EmployerResponseDto extends AbstractEntity {

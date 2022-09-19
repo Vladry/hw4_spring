@@ -28,6 +28,10 @@ public class EmployerService {
 
     public void saveAll_fromSet(Set<Employer> entities) {
         JpaRepository.saveAll(entities);
+        // этот метод был бы более правильным в таком виде:
+//    public Collection<Employer> saveAll_fromSet(Set<Employer> entities) {
+//        return JpaRepository.saveAll(entities);
+//    }
     }
 
     public boolean deleteById(Long id) {

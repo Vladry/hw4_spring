@@ -39,7 +39,7 @@ public class AccountController {
     public boolean putAmount(
             @RequestBody AccountTransferDto dto) {
         System.out.println("controller putAbount()-> ");
-        boolean res = accService.putAmount(dto.getAccNumber(), dto.getAmount());
+        boolean res = accService.putAmount(dto.getTo(), dto.getAmount());
         System.out.println("res: " + res);
         return res;
     }
@@ -47,7 +47,7 @@ public class AccountController {
     @PostMapping("/draw-amount")
     public boolean drawAmount(
             @RequestBody AccountTransferDto dto) {
-        return accService.drawAmount(dto.getAccNumber(), dto.getAmount());
+        return accService.drawAmount(dto.getFrom(), dto.getAmount());
     }
 
     @PostMapping("/transfer-amount")

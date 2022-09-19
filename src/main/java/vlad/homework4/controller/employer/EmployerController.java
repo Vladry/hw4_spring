@@ -1,6 +1,6 @@
 package vlad.homework4.controller.employer;
 
-import vlad.homework4.DTO.employer.listEmployerDto;
+import vlad.homework4.DTO.employer.EnlistedEmployerDto;
 import vlad.homework4.DTO.employer.EmployerRequestDto;
 import vlad.homework4.DTO.employer.EmployerResponseDto;
 import vlad.homework4.domain.Employer;
@@ -39,7 +39,7 @@ public class EmployerController {
 
 
     @PostMapping("/employers/list")
-    public void saveAllEmployers(@Valid @RequestBody listEmployerDto lDto) {
+    public void saveAll_fromSet(@Valid @RequestBody EnlistedEmployerDto lDto) {
         List<EmployerRequestDto> lEmp = lDto.getList();
         Set<Employer> le = lEmp.stream().map(reqDtoMapper::convertToEntity)
                 .collect(Collectors.toSet());
@@ -73,9 +73,9 @@ public class EmployerController {
     }
 
     @DeleteMapping("/employers/list")
-    public void deleteAllEmployers(@RequestBody listEmployerDto lDto) {
+    public void deleteAllEmployers(@RequestBody EnlistedEmployerDto lDto) {
         List<EmployerRequestDto> le = lDto.getList();
-        service.deleteAll( le.stream().map(reqDtoMapper::convertToEntity).collect(Collectors.toList()) );
+        service.deleteAll(le.stream().map(reqDtoMapper::convertToEntity).collect(Collectors.toList()));
     }
 
     @DeleteMapping("/employers/all")

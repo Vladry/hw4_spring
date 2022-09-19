@@ -23,7 +23,6 @@ public class Account extends AbstractEntity {
     Currency currency;
     Double balance;
 
-    @JsonIgnore   //без этого не будут из базы выдаваться customers!
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "customer_id")
     Customer customer;

@@ -13,7 +13,7 @@ import lombok.experimental.Accessors;
 public class AccountTransferDto extends AbstractEntity {
     private String from;
     private String to;
-    private String accNumber;
+//    private String accNumber;
     private Double amount;
 }
 

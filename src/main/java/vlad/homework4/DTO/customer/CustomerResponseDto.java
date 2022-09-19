@@ -2,6 +2,7 @@ package vlad.homework4.DTO.customer;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonView;
+import lombok.experimental.Accessors;
 import vlad.homework4.DTO.Views;
 import vlad.homework4.domain.AbstractEntity;
 import vlad.homework4.domain.Employer;
@@ -12,6 +13,7 @@ import lombok.NoArgsConstructor;
 import java.util.Set;
 
 @Data
+@Accessors(chain=true)
 @NoArgsConstructor
 @AllArgsConstructor
 public class CustomerResponseDto extends AbstractEntity {

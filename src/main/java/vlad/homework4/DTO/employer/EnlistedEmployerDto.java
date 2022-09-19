@@ -7,7 +7,7 @@ import java.util.List;
 
 @Data
 @NoArgsConstructor
-public class listEmployerDto {
+public class EnlistedEmployerDto {
 
     private List<EmployerRequestDto> list;
 

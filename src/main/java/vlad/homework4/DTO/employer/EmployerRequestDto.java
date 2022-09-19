@@ -13,7 +13,6 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 public class EmployerRequestDto extends AbstractEntity {
-//    @Min(3)
     @Size(min = 3, message = "name must be longer")
     private String name;
     @Size(min = 3, message = "street must be longer")
