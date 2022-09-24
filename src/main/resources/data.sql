@@ -1,35 +1,29 @@
-SET FOREIGN_KEY_CHECKS=0;
 
-INSERT INTO customers (name, email, age, phone_number, password)
+INSERT INTO customers (name, email, age, phone_number)
 VALUES ('Vlad',
         'rvy@ukr.net',
         40,
-        '+380675094252',
-        'pwVlad'
+        '+380675094252'
         ),
        ('Sergey',
         'sergo@ukr.net',
         42,
-        '234',
-        'pwSergey'
+        '234'
         ),
        ('Max',
         'Max@ukr.net',
         38,
-        '234234',
-        'pwMax'
+        '234234'
         ),
        ('Evgeny',
         'evgen-20@ukr.net',
         20,
-        '+380637400791',
-        'pwEvgeny'
+        '+380637400791'
         ),
        ('Petro',
         'petya@ukr.net',
         30,
-        '+380637400791',
-        'pwPetro'
+        '+380637400791'
         );
 
 
@@ -51,3 +45,9 @@ VALUES ('1', 1, 15.05, 1),
        ('7', 1, 44.05, 4),
        ('8', 2, 43.05, 5),
        ('9', 3, 33.05, 5);
+
+INSERT INTO users (user_name, password, account_non_expired,
+account_non_locked, credentials_non_expired, enabled)
+VALUES ('user', 'pw', true, true, true, true),
+       ('admin', 'pw', true, true, true, true),
+       ('guest', 'pw', true, true, true, true);

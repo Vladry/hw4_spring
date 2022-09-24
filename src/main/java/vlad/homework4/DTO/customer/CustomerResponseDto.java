@@ -29,7 +29,7 @@ public class CustomerResponseDto extends AbstractEntity {
     @JsonView(Views.Internal.class)
     private String phoneNumber;
 //    @JsonIgnore
-//    private String password;
+//    private String suggestedPassword;
     @JsonProperty("emplNa")
     private Set<Employer> employers_names;
     @JsonView({Views.Public.class, Views.Internal.class})

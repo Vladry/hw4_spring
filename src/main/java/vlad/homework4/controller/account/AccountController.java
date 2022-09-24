@@ -1,5 +1,8 @@
 package vlad.homework4.controller.account;
 
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import vlad.homework4.DTO.account.AccountRequestDto;
 import vlad.homework4.DTO.account.AccountTransferDto;
 import vlad.homework4.DTO.account.ListAccountRequestDto;
@@ -35,6 +38,7 @@ public class AccountController {
 
 
     /*** TRANSFER endpoints ***/
+    @PreAuthorize("hasRole('USER')")
     @PostMapping("/put-amount")
     public boolean putAmount(
             @RequestBody AccountTransferDto dto) {
@@ -44,12 +48,14 @@ public class AccountController {
         return res;
     }
 
+    @PreAuthorize("hasRole('USER')")
     @PostMapping("/draw-amount")
     public boolean drawAmount(
             @RequestBody AccountTransferDto dto) {
         return accService.drawAmount(dto.getFrom(), dto.getAmount());
     }
 
+    @PreAuthorize("hasRole('USER')")
     @PostMapping("/transfer-amount")
     public boolean transferAmount(
             @RequestBody AccountTransferDto dto) {
@@ -58,6 +64,7 @@ public class AccountController {
 
 
     /*** CREATE endpoints ***/
+    @PreAuthorize("hasRole('USER')")
     @PostMapping
     public Account create(
             @RequestBody AccountRequestDto a) {
@@ -75,6 +82,7 @@ public class AccountController {
         return ac;
     }
 
+    @PreAuthorize("hasRole('USER')")
     @PostMapping("/all")
     public void saveAll(
             @RequestBody ListAccountRequestDto dtoR) {
@@ -90,11 +98,15 @@ public class AccountController {
 
 
     /*** RETRIEVE endpoints ***/
-    @GetMapping("all")
+    @PreAuthorize("hasRole('USER')")
+    @GetMapping("/all")
     public List<Account> findAll() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        System.out.println("authentication: " + auth);
         return accService.findAll();
     }
 
+    @PreAuthorize("hasRole('USER')")
     @GetMapping("/{id}")
     public Account getById(
             @PathVariable("id") Long id) {
@@ -103,6 +115,7 @@ public class AccountController {
 
 
     /*** DELETE endpoints ***/
+    @PreAuthorize("hasRole('USER')")
     @DeleteMapping("/all")
     public void deleteAll(
             @RequestBody List<Account> la) {
@@ -110,6 +123,7 @@ public class AccountController {
     }
 
 
+    @PreAuthorize("hasRole('USER')")
     @DeleteMapping("/{id}")
     public void delete(
             @PathVariable("id") Long id) {

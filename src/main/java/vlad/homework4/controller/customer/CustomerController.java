@@ -1,6 +1,7 @@
 package vlad.homework4.controller.customer;
 
 import com.fasterxml.jackson.annotation.JsonView;
+import org.springframework.security.access.prepost.PreAuthorize;
 import vlad.homework4.DTO.Views;
 import vlad.homework4.DTO.customer.CustomerRequestDto;
 import vlad.homework4.DTO.customer.CustomerResponseDto;
@@ -29,6 +30,7 @@ public class CustomerController {
 
     /*** RETRIEVE ***/
 
+    @PreAuthorize("hasRole('USER')")
     @GetMapping("/customers/all-paged")
     public List<CustomerResponseDto> getAllPaged(
             @RequestParam("pagenumber") int pageNumber,
@@ -41,6 +43,7 @@ public class CustomerController {
         return custRsDtoList;
     }
 
+    @PreAuthorize("hasRole('USER')")
     @JsonView(Views.Public.class)
     @GetMapping("/customers/all")
     public List<CustomerResponseDto> findAll() {
@@ -50,6 +53,7 @@ public class CustomerController {
         return cRsDto;
     }
 
+    @PreAuthorize("hasRole('USER')")
     @JsonView(Views.Public.class)
     @GetMapping("/customers/{id}")
     public CustomerResponseDto getById(@PathVariable("id") Long id) {
@@ -58,6 +62,7 @@ public class CustomerController {
 
 
     /*** CREATE ***/
+    @PreAuthorize("hasRole('USER')")
     @PostMapping("/customers")
     public Customer save(
             @Valid @RequestBody CustomerRequestDto c) {
@@ -66,6 +71,7 @@ public class CustomerController {
         return cEntity;
     }
 
+    @PreAuthorize("hasRole('USER')")
     @PutMapping("update/customers")
     public Customer update(
             @RequestBody CustomerRequestDto c) {
@@ -75,6 +81,7 @@ public class CustomerController {
     }
 
 
+    @PreAuthorize("hasRole('USER')")
     @PostMapping("/customers/all")
     public void saveAll(
             @Valid @RequestBody listCustomerDto<CustomerRequestDto> lDto) {
@@ -85,12 +92,14 @@ public class CustomerController {
 
 
     /*** DELETE ***/
+    @PreAuthorize("hasRole('USER')")
     @DeleteMapping("/customers")
     public void delete(
             @RequestBody Customer c) {
         customerService.delete(c);
     }
 
+    @PreAuthorize("hasRole('USER')")
     @DeleteMapping("/customers/all")
     public void deleteAll(
             @RequestBody listCustomerDto<CustomerRequestDto> lDto) {
@@ -99,6 +108,7 @@ public class CustomerController {
                 .collect(Collectors.toList()));
     }
 
+    @PreAuthorize("hasRole('USER')")
     @DeleteMapping("/customers/{id}")
     public void deleteById(@PathVariable("id") Long id) {
         customerService.deleteById(id);
