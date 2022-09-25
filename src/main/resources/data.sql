@@ -46,8 +46,8 @@ VALUES ('1', 1, 15.05, 1),
        ('8', 2, 43.05, 5),
        ('9', 3, 33.05, 5);
 
-INSERT INTO users (user_name, password, account_non_expired,
-account_non_locked, credentials_non_expired, enabled)
-VALUES ('user', 'pw', true, true, true, true),
-       ('admin', 'pw', true, true, true, true),
-       ('guest', 'pw', true, true, true, true);
+-- INSERT INTO users (user_name, password, account_non_expired,
+-- account_non_locked, credentials_non_expired, enabled)
+-- VALUES ('user', 'pw', true, true, true, true),
+--        ('admin', 'pw', true, true, true, true),
+--        ('guest', 'pw', true, true, true, true);

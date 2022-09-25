@@ -3,10 +3,7 @@ package vlad.homework4.domain;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Data
@@ -15,6 +12,7 @@ import javax.persistence.Table;
 public class SysRoles {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
     private SysUser sysUser;
@@ -25,14 +23,9 @@ public class SysRoles {
     }
 
     public String toString(){
-        return "\n"+ this.getClass().getName() + "-> "+
-//                "{id:" +
-//                id +
-                "sysUser: " +
-                sysUser +
-                ", role: " +
-                role +
-                " }"
+        return
+                "role: " +
+                role
                 ;
     }
 }

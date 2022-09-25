@@ -1,21 +1,22 @@
 package vlad.homework4.controller.auth;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
+import vlad.homework4.DTO.SysUserRsDto;
+import vlad.homework4.DTO.UserCredentialsRqDto;
+import vlad.homework4.domain.SysUser;
+import vlad.homework4.service.UserService;
 
 @Controller
+@RequiredArgsConstructor
 public class AuthController {
-
-    private final PasswordEncoder passwordEncoder;
-
-    public AuthController(PasswordEncoder passwordEncoder){
-        this.passwordEncoder = passwordEncoder;
-    }
 
     @GetMapping("/login")
     public String login(Model model) {
@@ -38,6 +39,7 @@ public class AuthController {
         System.out.println("pwMatches: " + pwMatches);
         return "/dashboard";
     }*/
+
 
 
     @GetMapping("/logout")

@@ -3,6 +3,7 @@ import React, {useState} from 'react';
 import CustomerRequestForm from "../components/CustomerRequestForm";
 import CreateCustomer from "../components/CreateCustomer";
 import CreateAccount from "../components/CreateAccount";
+import CreateSystemUser from "../components/CreateSystemUser";
 
 
 function App() {
@@ -30,7 +31,8 @@ function App() {
             <CustomerRequestForm customers={customersArr} getCustomers={getCustomers}/>
             <br/><br/><br/>
             <CreateCustomer/><br/><br/>
-            <CreateAccount/>
+            <CreateAccount/><br/><br/>
+            <CreateSystemUser/>
         </div>
     );
 

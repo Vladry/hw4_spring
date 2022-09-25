@@ -9,7 +9,6 @@ import org.springframework.context.annotation.Profile;
 
 @Configuration
     public class ApplicationBeans {
-/*
 
         //этот бин - костыль, нужен для правильной работы h2
         @Profile("local")
@@ -24,7 +23,6 @@ import org.springframework.context.annotation.Profile;
             }
             return server;
         }
-*/
 
 }
 

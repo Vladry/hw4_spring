@@ -13,24 +13,48 @@ import java.util.Set;
 @Entity
 @Data
 @NoArgsConstructor
-@EqualsAndHashCode(callSuper = true)
-@ToString(of={"username", "role"})
-@Table(name ="users")
-public class SysUser extends AbstractEntity{
-    @Column(name="user_name", length= 36, nullable = false)
+//@EqualsAndHashCode(callSuper = true)
+@Table(name = "users")
+public class SysUser /*extends AbstractEntity*/ {
+
+    @Id
+    @GeneratedValue
+    Long id;
+
+    public SysUser(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+
+    @Column(name = "user_name", length = 36, nullable = false)
     private String username;
     @Column(length = 128, nullable = false)
     private String password;
-    @Column(name="account_non_expired", length = 1, nullable = false)
+    @Column(name = "account_non_expired", length = 1, nullable = false)
     private Boolean accountNonExpired = true;
-    @Column(name="account_non_locked", length = 1, nullable = false)
+    @Column(name = "account_non_locked", length = 1, nullable = false)
     private Boolean accountNonLocked = true;
-    @Column(name="credentials_non_expired", length = 1, nullable = false)
+    @Column(name = "credentials_non_expired", length = 1, nullable = false)
     private Boolean credentialsNonExpired = true;
     @Column(length = 1, nullable = false)
     private Boolean enabled = true;
 
-    @OneToMany(mappedBy="sysUser", fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @OneToMany(mappedBy = "sysUser", fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Set<SysRoles> sysRoles = new HashSet<>(List.of(new SysRoles("USER")));
 
+    @Override
+    public String toString() {
+        return "SysUser{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", accountNonExpired=" + accountNonExpired +
+                ", accountNonLocked=" + accountNonLocked +
+                ", credentialsNonExpired=" + credentialsNonExpired +
+                ", enabled=" + enabled +
+                ", sysRoles=" + sysRoles +
+//                ", createdDate=" + createdDate +
+//                ", lastModifiedDate=" + lastModifiedDate +
+                '}';
+    }
 }

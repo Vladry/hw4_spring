@@ -24,8 +24,13 @@ abstract public class AbstractEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @JsonView({Views.Public.class, Views.Internal.class})
+//    @Column(name = "id", updatable = false, nullable = false)
     protected Long id;
+
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @JsonView({Views.Public.class, Views.Internal.class})
+//    protected Long id;
 
     @CreatedDate
     @Temporal(TIMESTAMP)
