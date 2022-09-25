@@ -1,12 +1,15 @@
 package vlad.homework4.domain;
 
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 
 @Entity
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @Table(name="roles")
 public class SysRoles {
@@ -14,6 +17,7 @@ public class SysRoles {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @ManyToOne
     private SysUser sysUser;
     private String role;

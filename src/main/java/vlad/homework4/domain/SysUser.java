@@ -1,9 +1,6 @@
 package vlad.homework4.domain;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -11,20 +8,21 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
-//@EqualsAndHashCode(callSuper = true)
 @Table(name = "users")
-public class SysUser /*extends AbstractEntity*/ {
-
-    @Id
-    @GeneratedValue
-    Long id;
+public class SysUser extends AbstractEntity {
 
     public SysUser(String username, String password) {
         this.username = username;
         this.password = password;
     }
+
+//    @Column(name = "id")
+//    @Id
+//    @GeneratedValue
+//    Long id;
 
     @Column(name = "user_name", length = 36, nullable = false)
     private String username;

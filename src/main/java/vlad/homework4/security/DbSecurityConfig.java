@@ -26,9 +26,7 @@ public class DbSecurityConfig {
                 .antMatchers(
                         HttpMethod.GET,
                         "/index*", "/static/**", "/*.js", "/*.json", "/*.ico").permitAll()
-                .antMatchers("/users/create", "/login", "/logout", "/h2-console").permitAll()
-//  TODO разообраться чего не работает hasRole():    .antMatchers("/").hasRole("USER")
-//                .antMatchers().hasRole("ADMIN")
+                .antMatchers("/", "/register", "/users/create", "/users/create2", "/login", "/logout", "/h2-console").permitAll()
 //                .antMatchers().hasAnyRole("USER", "ADMIN")
                 .anyRequest().authenticated()
                 .and()
@@ -51,11 +49,9 @@ public class DbSecurityConfig {
     @Bean
     PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
+//        return NoOpPasswordEncoder.getInstance();
     }
 
-//    @Bean
-//    PasswordEncoder passwordEncoder(){
-//        return NoOpPasswordEncoder.getInstance();
-//    }
+
 
 }

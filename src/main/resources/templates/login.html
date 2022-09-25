@@ -5,24 +5,16 @@
     <title>Spring Security Login with email</title>
 </head>
 <body>
-<!--<div th:if="${param.error}">-->
-<!--    Invalid username and suggestedPassword.-->
-<!--</div>-->
-<!--<div th:if="${param.logout}">-->
-<!--    You have been logged out.-->
-<!--</div>-->
+
 <div sec:authorize="isAuthenticated()">
     <a th:href="@{/logout}">Logout</a>
 </div>
-<!--<div>
-    <p th:if="${suggestedUser}"><span th:text="'loggin user: ' + ${suggestedUser}"></span></p>
-    <p th:if="${suggestedPassword}"><span th:text="'with password: ' + ${suggestedPassword}"></span></p>
-</div>-->
+<a href="/register">Register</a>
 
 <!--  https://spring.io/guides/gs/handling-form-submission/-->
 <form th:action="@{/login}" method="post">
-    <div><label> Email as login: <input type="text" name="username" th:value="*{suggestedUser}"/> </label></div>
-    <div><label> Password: <input type="password" name="password" th:value="*{suggestedPassword}"/> </label></div>
+    <div><label> login: <input type="text" name="username" th:value="*{suggestedUser}"/> </label></div>
+    <div><label> Password: <input type="text" name="password" th:value="*{suggestedPassword}"/> </label></div>
     <div><input type="submit"  value="Sign In"/></div>
 </form>
 

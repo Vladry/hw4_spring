@@ -15,8 +15,20 @@ import vlad.homework4.domain.SysUser;
 import vlad.homework4.service.UserService;
 
 @Controller
-@RequiredArgsConstructor
 public class AuthController {
+
+    private final PasswordEncoder passwordEncoder;
+    private final UserService userService;
+
+    public AuthController(PasswordEncoder passwordEncoder, UserService userService) {
+        this.passwordEncoder = passwordEncoder;
+        this.userService = userService;
+    }
+
+    @GetMapping("/register")
+    public String register(Model model) {
+        return "/register";
+    }
 
     @GetMapping("/login")
     public String login(Model model) {
@@ -41,20 +53,42 @@ public class AuthController {
     }*/
 
 
+    @PostMapping("/users/create2")
+    public String register2(
+            @RequestParam("login") String login,
+            @RequestParam("password") String password) {
+
+        System.out.println("in register2-> ");
+        SysUser sysUser = null;
+        try {
+            sysUser = userService.findSecurityUserByUsername(login);
+            if (sysUser == null) {
+                SysUser user = new SysUser(login, passwordEncoder.encode(password));
+                userService.save(user);
+
+            } else {
+                System.out.println("user already exists");
+                throw new RuntimeException("user already exists");
+            }
+        } catch (RuntimeException e) {
+            System.out.println(e.getMessage());
+        }
+        return "/login";
+    }
+
 
     @GetMapping("/logout")
-    public void logout() {
+    public void logout(Model model) {
     }
 
-    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
-    @GetMapping("/dashboard")
-    public String dashboard() {
-        return "/dashboard";
-    }
+//    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
+//    @GetMapping("/dashboard")
+//    public String dashboard() {
+//        return "/dashboard";
+//    }
 
-    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     @GetMapping("/")
     public String homepage() {
-        return "/dashboard";
+        return "/login";
     }
 }

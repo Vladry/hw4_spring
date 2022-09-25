@@ -17,6 +17,13 @@ public class UserService {
 //    }
 
     public SysUser save(SysUser user){
+        System.out.println("in userService.save(user)");
+        System.out.println("user: "+user);
         return userRepository.save(user);
+    }
+
+
+    public SysUser findSecurityUserByUsername(String name){
+        return userRepository.findSecurityUserByUsername(name).orElse(null);
     }
 }

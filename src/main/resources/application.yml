@@ -39,11 +39,12 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.H2Dialect
+
       generate_statistics: true
     generate-ddl: true
     hibernate:
-      ddl-auto: update
-#      ddl-auto: create-drop
+#      ddl-auto: update
+      ddl-auto: create-drop
   config:
     activate:
       on-profile: local

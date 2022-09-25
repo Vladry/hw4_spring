@@ -4,12 +4,14 @@ import CustomerRequestForm from "../components/CustomerRequestForm";
 import CreateCustomer from "../components/CreateCustomer";
 import CreateAccount from "../components/CreateAccount";
 import CreateSystemUser from "../components/CreateSystemUser";
-
+import AppRouts from "./AppRouts";
 
 function App() {
     let customers = [];
+
     const getCustomers = async () => {
         const allCustomersUrl = '/customers/all';
+
 
         try {
             await fetch(allCustomersUrl, {
@@ -28,11 +30,13 @@ function App() {
 
     return (
         <div className="App">
+
             <CustomerRequestForm customers={customersArr} getCustomers={getCustomers}/>
             <br/><br/><br/>
             <CreateCustomer/><br/><br/>
             <CreateAccount/><br/><br/>
             <CreateSystemUser/>
+            <AppRouts/>
         </div>
     );
 
